@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web lab 10</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+    </header>
+    <main>
+        
+        <img src = "2.jpg" class="wizard" id="wizard">
+        <img src = "Rabbit.png" class="rabbit up" id="rabbit">
+        <img src = "Bird.png" class="bird" id="bird">
+        <img src = "Hat.png" class="hat" id="hat">
+        
+
+        <img src = "lamp_switch.png" id="lamp-switch" class="lamp-switch">
+        <img src="lamp.png" id="lamp" class="lamp">
+        <div class="light" id = "light"></div>
+        <img src = "lamp_head.png" class="lamp">
+
+        <div class="scene" id="scene"></div>
+        
+    </main>
+    <footer>
+    </footer>
+</body>
+</html>
+<script>
+    
+    document.addEventListener('wheel', function(e) {
+        e.preventDefault();
+    }, { passive: false });
+
+    document.addEventListener('touchmove', function(e) {
+        e.preventDefault();
+    }, { passive: false });
+
+    window.addEventListener('resize', function() {
+        document.body.style.overflow = 'hidden';
+    });
+
+    document.addEventListener('touchmove', function(e) {
+        e.preventDefault();
+    }, { passive: false });
+
+
+
+    const curtain = document.getElementById('scene');
+        
+    curtain.addEventListener('click', function() {
+        this.classList.toggle('lifted');
+    });
+
+    var is_light_on = false
+
+    document.getElementById('lamp-switch').addEventListener('click', function() {
+        this.classList.toggle('on');
+        document.getElementById('light').classList.toggle('on');
+        document.getElementById('rabbit').classList.toggle('light-on');
+        document.getElementById('wizard').classList.toggle('light-on');
+        document.getElementById('bird').classList.toggle('light-on');
+        document.getElementById('hat').classList.toggle('light-on');
+        is_light_on = !is_light_on;
+    });
+
+    var is_rabbit = false
+    var is_animation_on = false
+
+    document.getElementById('rabbit').addEventListener('click', function() {
+        if (!is_animation_on && is_light_on)
+        {
+            this.classList.toggle('up');
+            setTimeout(() => {
+                this.style.visibility = "hidden"
+                document.getElementById('bird').style.visibility = "visible"
+                document.getElementById('bird').classList.toggle('up');
+            }, 500);
+            
+        }
+    });
+
+    document.getElementById('bird').addEventListener('click', function() {
+        if (!is_animation_on && is_light_on)
+        {
+            this.classList.toggle('up');
+            setTimeout(() => {
+                this.style.visibility = "hidden"
+                document.getElementById('rabbit').style.visibility = "visible"
+                document.getElementById('rabbit').classList.toggle('up');
+            }, 500);
+            
+        }
+    });
+
+
+
+</script>
