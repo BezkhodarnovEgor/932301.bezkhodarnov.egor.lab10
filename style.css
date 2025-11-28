@@ -17,7 +17,7 @@ body {
     transform: translateX(-50%);
     width: 100vw;
     height: 100vh;
-    background-image: url('1.jpg');
+    background-image: url('images/1.jpg');
     background-size: cover;
     background-position: center bottom;
     background-repeat: no-repeat;
